@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: inv-backend-dev
+  name: inv-backend-develop
 spec:
   replicas: 1
   template:
@@ -10,7 +10,7 @@ spec:
       labels:
         app: inv
         role: backend
-        env: dev
+        env: develop
     spec:
       containers:
       - name: backend
@@ -22,9 +22,9 @@ spec:
         imagePullPolicy: Always
         readinessProbe:
           httpGet:
-            path: /healthz
+            path: /
             port: 8080
-        command: ["sh", "-c", "app -port=8080"]
+        command: []
         ports:
         - name: backend
           containerPort: 8080

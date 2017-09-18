@@ -22,9 +22,9 @@ spec:
         imagePullPolicy: Always
         readinessProbe:
           httpGet:
-            path: /healthz
+            path: /
             port: 8080
-        command: ["sh", "-c", "app -port=8080"]
+        command: []
         ports:
         - name: backend
           containerPort: 8080
