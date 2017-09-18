@@ -16,7 +16,7 @@ podTemplate(cloud: 'local cluster', label: 'golang-k8s',
 
             ansiColor('xterm') {
                 stage('Build') {
-                    sh 'go build'
+                    sh 'CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o inv-api .'
                 }
 
                 stage('Test') {
