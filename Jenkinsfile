@@ -48,7 +48,7 @@ podTemplate(cloud: 'local cluster', label: 'golang-k8s',
                             // Create namespace if it doesn't exist
                             sh "kubectl get ns ${env.BRANCH_NAME} || kubectl create ns ${env.BRANCH_NAME}"
                             // Don't use public load balancing for development branches
-                            sh "sed -i.bak 's#LoadBalancer#ClusterIP#' ./k8s/services/frontend.yaml"
+                            sh "sed -i.bak 's#LoadBalancer#ClusterIP#' ./k8s/services/backend.yaml"
                             sh "sed -i.bak 's#gcr.io/${projectName}/inv-api:1.0.0#${imageTag}#' ./k8s/develop/*.yaml"
                             sh("kubectl --namespace=${env.BRANCH_NAME} apply -f k8s/services/")
                             sh("kubectl --namespace=${env.BRANCH_NAME} apply -f k8s/develop/")
